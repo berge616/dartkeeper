@@ -252,7 +252,7 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
     onlyAllowOrigins: [
-      'https://dartkeeper.herokuapp.com/'
+      'https://dartkeeper.herokuapp.com'
     ],
 
 
