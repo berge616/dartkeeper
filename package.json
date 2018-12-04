@@ -5,15 +5,16 @@
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
-    "sails": "^1.0.0-42",
+    "async": "2.0.1",
+    "connect-redis": "3.2.0",
     "grunt": "1.0.1",
+    "lodash": "3.10.1",
+    "sails": "^1.0.0-42",
+    "sails-hook-grunt": "^3.0.0",
     "sails-hook-orm": "^2.0.0-16",
     "sails-hook-sockets": "^1.4.0",
-    "sails-hook-grunt": "^3.0.0",
-    "connect-redis": "3.2.0",
-    "socket.io-redis": "5.2.0",
-    "lodash": "3.10.1",
-    "async": "2.0.1"
+    "sails-postgresql": "^1.0.1",
+    "socket.io-redis": "5.2.0"
   },
   "devDependencies": {
     "eslint": "4.11.0"
@@ -30,8 +31,5 @@
     "url": "git://github.com/kylebergemann/dartkeeper.git"
   },
   "author": "kylebergemann",
-  "license": "",
-  "engines": {
-    "node": "8"
-  }
+  "license": ""
 }
