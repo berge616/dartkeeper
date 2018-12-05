@@ -1,1 +1,1 @@
-web: sails lift --alter --dev
+web: sails lift
