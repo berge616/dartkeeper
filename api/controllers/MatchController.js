@@ -27,21 +27,21 @@ module.exports = {
     let p1Marks = req.body.p1.marks
     let p2Marks = req.body.p2.marks
     let p1Distribution = await Distribution.create({
-      20: p1Marks[0], 19: p1Marks[1], 18: p1Marks[2], 17: p1Marks[3], 16: p1Marks[4],
-      15: p1Marks[5], 14: p1Marks[6], 13: p1Marks[7], 12: p1Marks[8], 11: p1Marks[9], 10: p1Marks[10],
-      9: p1Marks[11], 8: p1Marks[12], 7: p1Marks[13], 6: p1Marks[14], 5: p1Marks[15], 4: p1Marks[16],
-      3: p1Marks[17], 2: p1Marks[18], 1: p1Marks[19], bullseye: p1Marks.bullseye, door: p1Marks.door,
+      20: p1Marks[20], 19: p1Marks[19], 18: p1Marks[18], 17: p1Marks[17], 16: p1Marks[16],
+      15: p1Marks[15], 14: p1Marks[14], 13: p1Marks[13], 12: p1Marks[12], 11: p1Marks[11], 10: p1Marks[10],
+      9: p1Marks[9], 8: p1Marks[8], 7: p1Marks[7], 6: p1Marks[6], 5: p1Marks[5], 4: p1Marks[4],
+      3: p1Marks[3], 2: p1Marks[2], 1: p1Marks[1], bullseye: p1Marks.bullseye, door: p1Marks.door,
     }).fetch()
 
     let p2Distribution = await Distribution.create({
-      20: p2Marks[0], 19: p2Marks[1], 18: p2Marks[2], 17: p2Marks[3], 16: p2Marks[4],
-      15: p2Marks[5], 14: p2Marks[6], 13: p2Marks[7], 12: p2Marks[8], 11: p2Marks[9], 10: p2Marks[10],
-      9: p2Marks[11], 8: p2Marks[12], 7: p2Marks[13], 6: p2Marks[14], 5: p2Marks[15], 4: p2Marks[16],
-      3: p2Marks[17], 2: p2Marks[18], 1: p2Marks[19], bullseye: p2Marks.bullseye, door: p2Marks.door,
+      20: p2Marks[20], 19: p2Marks[19], 18: p2Marks[18], 17: p2Marks[17], 16: p2Marks[16],
+      15: p2Marks[15], 14: p2Marks[14], 13: p2Marks[13], 12: p2Marks[12], 11: p2Marks[11], 10: p2Marks[10],
+      9: p2Marks[9], 8: p2Marks[8], 7: p2Marks[7], 6: p2Marks[6], 5: p2Marks[5], 4: p2Marks[4],
+      3: p2Marks[3], 2: p2Marks[2], 1: p2Marks[1], bullseye: p2Marks.bullseye, door: p2Marks.door,
     }).fetch()
 
-    p1CalculatedScore = calculateScore(p1Marks)
-    p2CalculatedScore = calculateScore(p2Marks)
+    const p1CalculatedScore = calculateScore(p1Marks)
+    const p2CalculatedScore = calculateScore(p2Marks)
 
     await Match.create({
       game_type: req.body.gameType, player: p1.id, opponent: p2.id, score: req.body.p1.score,
