@@ -12,34 +12,34 @@ module.exports = {
       type: 'number',
       required: true
     },
-    player: {
+    p1: {
       type: 'number',
       required: true,
     },
-    opponent: {
+    p2: {
       type: 'number',
       required: true,
     },
-    score: {
+    p1_score: {
       type: 'number',
       required: true,
     },
-    calculated_score: {
+    p1_calculated_score: {
       type: 'number',
       required: true,
     },
-    opponent_score: {
+    p2_score: {
       type: 'number',
       required: true,
     },
-    opponent_calculated_score: {
+    p2_calculated_score: {
       type: 'number',
       required: true,
     },
-    distribution: {
+    p1_distribution: {
       type: 'number'
     },
-    opponent_distribution: {
+    p2_distribution: {
       type: 'number'
     }
   },

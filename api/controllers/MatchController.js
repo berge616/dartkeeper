@@ -44,16 +44,11 @@ module.exports = {
     const p2CalculatedScore = calculateScore(p2Marks)
 
     await Match.create({
-      game_type: req.body.gameType, player: p1.id, opponent: p2.id, score: req.body.p1.score,
-      calculated_score: p1CalculatedScore, opponent_score: req.body.p2.score, opponent_calculated_score: p2CalculatedScore,
-      distribution: p1Distribution.id, opponenet_distribution: p2Distribution.id,
+      game_type: req.body.gameType, p1: p1.id, p2: p2.id, p1_score: req.body.p1.score,
+      p1_calculated_score: p1CalculatedScore, p2_score: req.body.p2.score, p2_calculated_score: p2CalculatedScore,
+      p1_distribution: p1Distribution.id, p2_distribution: p2Distribution.id,
     })
 
-    await Match.create({
-      game_type: req.body.gameType, player: p2.id, opponent: p1.id, score: req.body.p2.score,
-      calculated_score: p2CalculatedScore, opponent_score: req.body.p1.score, opponent_calculated_score: p1CalculatedScore,
-      distribution: p2Distribution.id, opponenet_distribution: p1Distribution.id,
-    })
 
     return res.ok()
 
