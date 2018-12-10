@@ -53,7 +53,7 @@ module.exports = {
     })
 
 
-    return res.ok()
+    return res.ok({result:200})
 
     function calculateScore (distribution) {
 
