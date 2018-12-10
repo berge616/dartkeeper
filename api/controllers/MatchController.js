@@ -26,22 +26,25 @@ module.exports = {
     //Record players marks in distribution table
     let p1Marks = req.body.p1.marks
     let p2Marks = req.body.p2.marks
-    let p1Distribution = await Distribution.create({
-      20: p1Marks[20], 19: p1Marks[19], 18: p1Marks[18], 17: p1Marks[17], 16: p1Marks[16],
-      15: p1Marks[15], 14: p1Marks[14], 13: p1Marks[13], 12: p1Marks[12], 11: p1Marks[11], 10: p1Marks[10],
-      9: p1Marks[9], 8: p1Marks[8], 7: p1Marks[7], 6: p1Marks[6], 5: p1Marks[5], 4: p1Marks[4],
-      3: p1Marks[3], 2: p1Marks[2], 1: p1Marks[1], bullseye: p1Marks.bullseye, door: p1Marks.door,
-    }).fetch()
 
-    let p2Distribution = await Distribution.create({
-      20: p2Marks[20], 19: p2Marks[19], 18: p2Marks[18], 17: p2Marks[17], 16: p2Marks[16],
-      15: p2Marks[15], 14: p2Marks[14], 13: p2Marks[13], 12: p2Marks[12], 11: p2Marks[11], 10: p2Marks[10],
-      9: p2Marks[9], 8: p2Marks[8], 7: p2Marks[7], 6: p2Marks[6], 5: p2Marks[5], 4: p2Marks[4],
-      3: p2Marks[3], 2: p2Marks[2], 1: p2Marks[1], bullseye: p2Marks.bullseye, door: p2Marks.door,
-    }).fetch()
+    let p1MarksResolved = {
+      20: p1Marks[20]?p1Marks[20]:0, 19: p1Marks[19]?p1Marks[19]:0, 18: p1Marks[18]?p1Marks[18]:0, 17: p1Marks[17]?p1Marks[17]:0, 16: p1Marks[16]?p1Marks[16]:0,
+      15: p1Marks[15]?p1Marks[15]:0, 14: p1Marks[14]?p1Marks[14]:0, 13: p1Marks[13]?p1Marks[13]:0, 12: p1Marks[12]?p1Marks[12]:0, 11: p1Marks[11]?p1Marks[11]:0, 10: p1Marks[10]?p1Marks[10]:0,
+      9: p1Marks[9]?p1Marks[9]:0, 8: p1Marks[8]?p1Marks[8]:0, 7: p1Marks[7]?p1Marks[7]:0, 6: p1Marks[6]?p1Marks[6]:0, 5: p1Marks[5]?p1Marks[5]:0, 4: p1Marks[4]?p1Marks[4]:0,
+      3: p1Marks[3]?p1Marks[3]:0, 2: p1Marks[2]?p1Marks[2]:0, 1: p1Marks[1]?p1Marks[1]:0, bullseye: p1Marks.bullseye?p1Marks.bullseye:0, door: p1Marks.door?p1Marks.door:0,
+    }
+    let p2MarksResolved = {
+      20: p2Marks[20]?p2Marks[20]:0, 19: p2Marks[19]?p2Marks[19]:0, 18: p2Marks[18]?p2Marks[18]:0, 17: p2Marks[17]?p2Marks[17]:0, 16: p2Marks[16]?p2Marks[16]:0,
+      15: p2Marks[15]?p2Marks[15]:0, 14: p2Marks[14]?p2Marks[14]:0, 13: p2Marks[13]?p2Marks[13]:0, 12: p2Marks[12]?p2Marks[12]:0, 11: p2Marks[11]?p2Marks[11]:0, 10: p2Marks[10]?p2Marks[10]:0,
+      9: p2Marks[9]?p2Marks[9]:0, 8: p2Marks[8]?p2Marks[8]:0, 7: p2Marks[7]?p2Marks[7]:0, 6: p2Marks[6]?p2Marks[6]:0, 5: p2Marks[5]?p2Marks[5]:0, 4: p2Marks[4]?p2Marks[4]:0,
+      3: p2Marks[3]?p2Marks[3]:0, 2: p2Marks[2]?p2Marks[2]:0, 1: p2Marks[1]?p2Marks[1]:0, bullseye: p2Marks.bullseye?p2Marks.bullseye:0, door: p2Marks.door?p2Marks.door:0,
+    }
+    let p1Distribution = await Distribution.create(p1MarksResolved).fetch()
 
-    const p1CalculatedScore = calculateScore(p1Marks)
-    const p2CalculatedScore = calculateScore(p2Marks)
+    let p2Distribution = await Distribution.create(p2MarksResolved).fetch()
+
+    const p1CalculatedScore = calculateScore(p1MarksResolved)
+    const p2CalculatedScore = calculateScore(p2MarksResolved)
 
     await Match.create({
       game_type: req.body.gameType, p1: p1.id, p2: p2.id, p1_score: req.body.p1.score,

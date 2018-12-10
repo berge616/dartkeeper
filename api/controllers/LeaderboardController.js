@@ -6,7 +6,8 @@ module.exports = {
                 COALESCE(p1won.count,0)+COALESCE(p2won.count,0)            as won,
                 COALESCE(p1lost.count,0)+COALESCE(p2lost.count,0)          as lost,
                 (COALESCE(p1won.count,0.0)+COALESCE(p2won.count,0.0))/(COALESCE(p1won.count,0.0)+COALESCE(p2won.count,0.0) + COALESCE(p1lost.count,0.0)+COALESCE(p2lost.count,0.0) ) as percentage
-         from
+select *          
+from
            player
              left join
              (
