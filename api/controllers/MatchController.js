@@ -110,8 +110,8 @@ module.exports = {
     else if (diff < 150) { verb = ' conquered ' }
     else if (diff < 200) { verb = ' inflicted a blow upon '}
     else if (diff < 250) { verb = ' embarrassed ' }
-    else if (diff < 300) { verb = ' bestowed complete destruction upon '}
-    else {verb = ' brought his pen and paper and taught a lesson to '}
+    else if (diff < 300) { verb = ' brought his pen and paper and taught a lesson to '}
+    else {verb = ' bestowed complete destruction upon '}
 
     sendToSlack(winner, winnerScore, loser, loserScore, verb)
 
