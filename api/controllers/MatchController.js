@@ -114,7 +114,8 @@ module.exports = {
     else if (diff < 350) { verb = ' curb stomped ' }
     else if (diff < 400) { verb = ' utterly humiliated ' }
     else if (diff < 450) { verb = ' bestowed complete destruction upon ' }
-    else { verb = ' took a hot, steamy dump on ' }
+    else if (diff < 500) { verb = ' took a hot, steamy dump on ' }
+    else { verb = ' pooped in a bowl of Honey Nut Cheerios and spoon fed it to ' }
 
     sendToSlack(winner, winnerScore, loser, loserScore, verb)
 
