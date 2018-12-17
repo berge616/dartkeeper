@@ -105,13 +105,16 @@ module.exports = {
     }
 
     const diff = winnerScore - loserScore
-    if (diff < 50) {verb = ' snuck by '}
-    else if (diff < 100) {verb = ' shot ahead of '}
-    else if (diff < 150) { verb = ' conquered ' }
-    else if (diff < 200) { verb = ' inflicted a blow upon '}
+    if (diff < 50) {verb = ' snuck by ' }
+    else if (diff < 100) { verb = ' triumphed over ' }
+    else if (diff < 150) { verb = ' smoked ' }
+    else if (diff < 200) { verb = ' conquered ' }
     else if (diff < 250) { verb = ' embarrassed ' }
-    else if (diff < 300) { verb = ' brought his pen and paper and taught a lesson to '}
-    else {verb = ' bestowed complete destruction upon '}
+    else if (diff < 300) { verb = ' brought his pen and paper and taught a lesson to ' }
+    else if (diff < 350) { verb = ' curb stomped ' }
+    else if (diff < 400) { verb = ' utterly humiliated ' }
+    else if (diff < 450) { verb = ' bestowed complete destruction upon ' }
+    else { verb = ' took a hot, steamy dump on ' }
 
     sendToSlack(winner, winnerScore, loser, loserScore, verb)
 
