@@ -90,7 +90,7 @@ module.exports = {
       p1_distribution: p1Distribution.id, p2_distribution: p2Distribution.id,
     })
 
-    var winner, loser, winnerScore, loserScore, verb
+    var winner, loser, winnerScore, loserScore, statement
     if (p1CalculatedScore > p2CalculatedScore) {
       winner = req.body.p1.name
       winnerScore = req.body.p1.score
@@ -105,19 +105,35 @@ module.exports = {
     }
 
     const diff = winnerScore - loserScore
-    if (diff < 50) {verb = ' snuck by ' }
-    else if (diff < 100) { verb = ' triumphed over ' }
-    else if (diff < 150) { verb = ' smoked ' }
-    else if (diff < 200) { verb = ' conquered ' }
-    else if (diff < 250) { verb = ' embarrassed ' }
-    else if (diff < 300) { verb = ' brought his pen and paper and taught a lesson to ' }
-    else if (diff < 350) { verb = ' curb stomped ' }
-    else if (diff < 400) { verb = ' utterly humiliated ' }
-    else if (diff < 450) { verb = ' bestowed complete destruction upon ' }
-    else if (diff < 500) { verb = ' took a hot, steamy dump on ' }
-    else { verb = ' pooped in a bowl of Honey Nut Cheerios and spoon fed it to ' }
+    const by50 = [`${winner} snuck by ${loser}`, `${winner} gave a shoutout at team meeting to everyone but ${loser}`,
+      `${winner} walked past ${loser} over the weekend and didn't make eye contact` ]
+    const by100 = [`${winner} triumphed ${loser}`,`${winner} did what he came here to do and beat ${loser}`]
+    const by150 = [`${winner} conquered ${loser}`, `${winner} beat ${loser} with a rubber hose`, `${winner} refused to be gentle with ${loser}`]
+    const by200 = [`${winner} embarrassed ${loser}`,`${winner} put a leash on ${loser} and took him for a walk`]
+    const by250 = [`${winner} asked ${loser} to bring his pen and paper and then proceeded to teach an elementary level lesson ${loser}`]
+    const by300 = [`${winner} curb stomped ${loser}` ]
+    const by350 = [`${winner} utterly humiliated ${loser}`, `${winner} RSVP'd to ${loser}'s dance recital then blew it off`]
+    const by400 = [`${winner} took ${loser} out back with the boys and made ${loser} beg for mercy`]
+    const by450 = [`${winner} bestowed complete destruction upon ${loser}`]
+    const by500 = [`${winner} took a hot, steamy #2 on ${loser}`, `${winner} turned out the lights on ${loser}`]
+    const by550 = [`${winner} read ${loser} a book and put him to bed`]
+    const by600 = [`${winner} defecated in a bowl of Honey Nut Cheerios and spoon fed it to ${loser}`]
 
-    sendToSlack(winner, winnerScore, loser, loserScore, verb)
+
+    if (diff < 50) {statement = by50[Math.floor(Math.random()*by50.length)]  }
+    else if (diff < 100) { statement = by100[Math.floor(Math.random()*by100.length)] }
+    else if (diff < 150) { statement = by150[Math.floor(Math.random()*by150.length)] }
+    else if (diff < 200) { statement = by200[Math.floor(Math.random()*by200.length)] }
+    else if (diff < 250) { statement = by250[Math.floor(Math.random()*by250.length)] }
+    else if (diff < 300) { statement = by300[Math.floor(Math.random()*by300.length)]}
+    else if (diff < 350) { statement = by350[Math.floor(Math.random()*by350.length)]}
+    else if (diff < 400) { statement = by400[Math.floor(Math.random()*by400.length)] }
+    else if (diff < 450) { statement = by450[Math.floor(Math.random()*by450.length)]}
+    else if (diff < 500) { statement = by500[Math.floor(Math.random()*by500.length)] }
+    else if (diff < 550) { statement = by550[Math.floor(Math.random()*by550.length)] }
+    else { statement = by600[Math.floor(Math.random()*by600.length)] }
+
+    sendToSlack(winnerScore, loserScore, statement)
 
     return res.ok({result: 200})
 
@@ -132,7 +148,7 @@ module.exports = {
 
     }
 
-    function sendToSlack (winnerName, winnerScore, loserName, loserScore, verb) {
+    function sendToSlack (winnerScore, loserScore, statement) {
       var options = {
         uri: slackUrl,
         method: 'POST',
@@ -141,7 +157,7 @@ module.exports = {
           'Content-Type': 'application/json',
         },
         body: {
-          text: winnerName + verb + loserName + ' with a score of ' + winnerScore + ' to ' + loserScore,
+          text: statement + ' with a score of ' + winnerScore + ' to ' + loserScore,
         },
         json: true,
       }
