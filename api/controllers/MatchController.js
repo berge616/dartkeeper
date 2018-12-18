@@ -106,8 +106,8 @@ module.exports = {
 
     const diff = winnerScore - loserScore
     const by50 = [`${winner} snuck by ${loser}`, `${winner} gave a shoutout at team meeting to everyone but ${loser}`,
-      `${winner} walked past ${loser} over the weekend and didn't make eye contact` ]
-    const by100 = [`${winner} triumphed ${loser}`,`${winner} did what he came here to do and beat ${loser}`]
+      `${winner} walked past ${loser} over the weekend and didn't make eye contact`, `${winner} taunted ${loser}` ]
+    const by100 = [`${winner} triumphed ${loser}`,`${winner} did what he came here to do and beat ${loser}`, `${winner} finished ${loser}`]
     const by150 = [`${winner} conquered ${loser}`, `${winner} beat ${loser} with a rubber hose`, `${winner} refused to be gentle with ${loser}`]
     const by200 = [`${winner} embarrassed ${loser}`,`${winner} put a leash on ${loser} and took him for a walk`]
     const by250 = [`${winner} asked ${loser} to bring his pen and paper and then proceeded to teach an elementary level lesson ${loser}`]
