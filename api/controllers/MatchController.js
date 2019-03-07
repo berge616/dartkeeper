@@ -106,16 +106,16 @@ module.exports = {
 
     const diff = winnerScore - loserScore
     const by50 = [`${winner} snuck by ${loser}`,`${winner} walked past ${loser} over the weekend and didn't make eye contact`, `${winner} taunted ${loser}` ]
-    const by100 = [`${winner} triumphed over ${loser}`,`${winner} did what he came here to do and beat ${loser}`, `${winner} finished ${loser}`]
+    const by100 = [`${winner} triumphed over ${loser}`,`${winner} did what they came here to do and beat ${loser}`, `${winner} finished ${loser}`]
     const by150 = [`${winner} conquered ${loser}`]
     const by200 = [`${winner} embarrassed ${loser}`]
-    const by250 = [`${winner} asked ${loser} to bring his pen and paper and then proceeded to teach an elementary level lesson to ${loser}`]
+    const by250 = [`${winner} asked ${loser} to bring their pen and paper and then proceeded to teach an elementary level lesson to ${loser}`]
     const by300 = [`${winner} had a marvelous game against ${loser}` ]
     const by350 = [`${winner} utterly humiliated ${loser}`, `${winner} RSVP'd to ${loser}'s dance recital then blew it off`]
-    const by400 = [`${winner} had the game of his life against ${loser}`]
+    const by400 = [`${winner} had the game of their life against ${loser}`]
     const by450 = [`${winner} bestowed complete destruction upon ${loser}`]
     const by500 = [ `${winner} turned out the lights on ${loser}`]
-    const by550 = [`${winner} read ${loser} a book and put him to bed`]
+    const by550 = [`${winner} read ${loser} a book and put them to bed`]
     const by600 = [`${winner} taught ${loser} how the game of darts is played`]
 
 
