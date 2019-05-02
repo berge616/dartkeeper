@@ -18,6 +18,10 @@ module.exports = {
       return (record != null && (record.won + record.lost) > 0);
     });
 
+    filtered.sort(function(first, second){
+      return second.percentage - first.percentage
+    })
+
 
     function addPlayersToDict(player){
       dict[player.id]={name:player.name, allTimeWin:0,allTimeLost:0, won:0, lost:0}
