@@ -8,10 +8,6 @@
 module.exports = {
 
   attributes: {
-    game_type: {
-      type: 'number',
-      required: true
-    },
     p1: {
       type: 'number',
       required: true,
@@ -36,12 +32,6 @@ module.exports = {
       type: 'number',
       required: true,
     },
-    p1_distribution: {
-      type: 'number'
-    },
-    p2_distribution: {
-      type: 'number'
-    }
   },
 
 };
