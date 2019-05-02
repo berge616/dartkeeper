@@ -14,8 +14,8 @@ module.exports = {
     matches.map(addMatchesToDict)
     dict.map(calculateStats)
 
-    let filtered = dict.filter(function (el) {
-      return el != null;
+    let filtered = dict.filter(function (record) {
+      return (record != null && (record.win + record.lost) > 0);
     });
 
 
