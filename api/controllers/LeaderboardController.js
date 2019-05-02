@@ -15,12 +15,12 @@ module.exports = {
     dict.map(calculateStats)
 
     let filtered = dict.filter(function (record) {
-      return (record != null && (record.win + record.lost) > 0);
+      return (record != null && (record.won + record.lost) > 0);
     });
 
 
     function addPlayersToDict(player){
-      dict[player.id]={name:player.name, allTimeWin:0,allTimeLost:0, win:0, lost:0}
+      dict[player.id]={name:player.name, allTimeWin:0,allTimeLost:0, won:0, lost:0}
     }
 
     function addMatchesToDict(match){
@@ -28,7 +28,7 @@ module.exports = {
         dict[match.p1].allTimeWin++
         dict[match.p2].allTimeLost++
         if(moment(match.createdAt).isSameOrAfter(moment(),'month')){
-          dict[match.p1].win++
+          dict[match.p1].won++
           dict[match.p2].lost++
         }
 
@@ -36,14 +36,14 @@ module.exports = {
         dict[match.p2].allTimeWin++
         dict[match.p1].allTimeLost++
         if(moment(match.createdAt).isSameOrAfter(moment(),'month')){
-          dict[match.p2].win++
+          dict[match.p2].won++
           dict[match.p1].lost++
         }
       }
     }
 
     function calculateStats(record){
-      record.percentage = record.win/(record.lost + record.win)
+      record.percentage = record.won/(record.lost + record.won)
       record.allTimePercentage = record.allTimeWin/(record.allTimeLost + record.allTimeWin)
     }
 
