@@ -44,4 +44,9 @@ module.exports.routes = {
     action: 'getLeaderboard'
   },
 
+  'get /startGame': {
+    controller: 'MatchController',
+    action: 'startGame'
+  }
+
 };

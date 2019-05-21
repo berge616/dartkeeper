@@ -117,5 +117,31 @@ module.exports = {
       })
     }
   },
+  startGame: async function(req,res) {
+    const p1 = req.param('p1Name')
+    const p2 = req.param('p2Name')
+
+    var options = {
+      uri: slackUrl,
+      method: 'POST',
+      headers: {
+        'User-Agent': 'Request-Promise',
+        'Content-Type': 'application/json',
+      },
+      body: {
+        text: 'The darts are flying! ' + p1 + ' vs ' + p2
+      },
+      json: true,
+    }
+
+    //Call apple server to get receipt data
+    rp(options).then(function (resData) {
+      sails.log.info('Success posting to slack: ', resData)
+
+    }).catch(function(error) {
+      sails.log.error('Failed to send status to slack:', error)
+    })
+    res.ok()
+  }
 }
 
