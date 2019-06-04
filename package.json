@@ -7,17 +7,17 @@
   "dependencies": {
     "async": "2.0.1",
     "connect-redis": "3.2.0",
-    "grunt": "1.0.1",
+    "grunt": "^1.0.4",
     "lodash": "3.10.1",
     "moment": "^2.24.0",
     "request": "^2.88.0",
-    "request-promise": "^4.2.2",
-    "sails": "^1.0.0-42",
-    "sails-hook-grunt": "^3.0.0",
+    "request-promise": "^4.2.4",
+    "sails": "^1.2.2",
+    "sails-hook-grunt": "^3.1.1",
     "sails-hook-orm": "^2.0.0-16",
     "sails-hook-sockets": "^1.4.0",
     "sails-mysql": "^1.0.1",
-    "sails-postgresql": "^1.0.1",
+    "sails-postgresql": "^1.0.2",
     "socket.io-redis": "5.2.0"
   },
   "devDependencies": {
