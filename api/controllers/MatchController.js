@@ -32,12 +32,9 @@ module.exports = {
     const p2CalculatedScore = calculateScore(p2Marks)
 
     //Ensure that this is not a duplicate of previous match
-    let duplicateMatch = await Match.find({p1: p1.id, p2: p2.id,
-      p1_score: req.body.p1.score, p1_calculated_score: p1CalculatedScore,
-      p2_score: req.body.p2.score, p2_calculated_score: p2CalculatedScore})
-
-    //duplicate match detected. Return 200 so client doesn't keep sending
-    if(duplicateMatch.length > 0){
+    let lastMatch = await Match.find({limit:1,sort: 'id DESC'})
+    if(lastMatch[0].p1 === p1.id && lastMatch[0].p2 === p2.id && lastMatch[0].p1_calculated_score === p1CalculatedScore && lastMatch[0].p2_calculated_score === p2CalculatedScore){
+      sails.log.error("this match is a dup so ignoring");
       return res.ok();
     }
 
