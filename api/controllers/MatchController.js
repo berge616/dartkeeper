@@ -25,19 +25,26 @@ module.exports = {
       p2 = await Player.create({name: req.body.p2.name}).fetch()
     }
 
-    //Record players marks in distribution table
     let p1Marks = req.body.p1.marks
     let p2Marks = req.body.p2.marks
 
     const p1CalculatedScore = calculateScore(p1Marks)
     const p2CalculatedScore = calculateScore(p2Marks)
 
+    //Ensure that this is not a duplicate of previous match
+    let duplicateMatch = await Match.find({p1: p1.id, p2: p2.id,
+      p1_score: req.body.p1.score, p1_calculated_score: p1CalculatedScore,
+      p2_score: req.body.p2.score, p2_calculated_score: p2CalculatedScore})
+
+    //duplicate match detected. Return 200 so client doesn't keep sending
+    if(duplicateMatch.length > 0){
+      return res.ok();
+    }
+
     await Match.create({
       p1: p1.id, p2: p2.id,
       p1_score: req.body.p1.score, p1_calculated_score: p1CalculatedScore,
-      p2_score: req.body.p2.score, p2_calculated_score: p2CalculatedScore,
-      p1_20:p1Marks[20],p1_19:p1Marks[19],p1_18:p1Marks[18],p1_17:p1Marks[17],p1_16:p1Marks[16],p1_15:p1Marks[15],p1_bullseye:p1Marks.bullseye,p1_door:p1Marks.door,
-      p2_20:p2Marks[20],p2_19:p2Marks[19],p2_18:p2Marks[18],p2_17:p2Marks[17],p2_16:p2Marks[16],p2_15:p2Marks[15],p2_bullseye:p2Marks.bullseye,p2_door:p2Marks.door
+      p2_score: req.body.p2.score, p2_calculated_score: p2CalculatedScore
     })
 
     let winner, loser, winnerScore, loserScore, statement
